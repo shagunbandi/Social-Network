@@ -1,0 +1,7 @@
+{% extends 'peace/base.html' %}
+{% load staticfiles %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+    <br/>
+    <a href="{% url 'posts:index' %}">Social Part</a><br/>
+{% endblock %}

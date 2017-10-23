@@ -1,0 +1,20 @@
+{% extends 'accounts/profile/base_profile.html' %}
+{% block nav %}
+    {% with username=title %}
+        {{ block.super }}
+    {% endwith%}
+{% endblock %}
+{% block title %}{{ title }} | profile{% endblock %}
+{% block body_accounts %}
+    <div class="container-fluid">
+        <h1>About: </h1>
+        {% if instance != user %}
+            <a href="{% url 'accounts:send-request' username=instance.username %}">Send Request</a>
+            <a href="{% url 'accounts:unfriend' username=instance.username %}">Remove Friend</a>
+            <hr/>
+        {% endif %}
+        Username : {{ instance.username }}<br/>
+        Email: {{ instance.email }}<br/> {# ye nahi dikhatan hai #}
+        <hr/>
+        </div>
+{% endblock %}

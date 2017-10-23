@@ -1,0 +1,17 @@
+{% extends 'accounts/profile/base_profile.html' %}
+{% block nav %}
+    {% with username=title %}
+        {{ block.super }}
+    {% endwith%}
+{% endblock %}
+{% block title %}{{ title }} | profile{% endblock %}
+{% block body_accounts %}
+
+    <div class="container-fluid">
+        <h1>Friends:</h1>
+        {% for friend in friend_list %}
+            <p><a href="{% url 'accounts:profile' username=friend.username %}">{{ friend }}</a></p>
+        {% endfor %}
+    </div>
+
+{% endblock %}

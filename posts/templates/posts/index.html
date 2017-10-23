@@ -1,0 +1,45 @@
+{% extends 'peace/base.html' %}
+{% load staticfiles %}
+{% block title %}{{ title }}{% endblock %}
+{% block head %}<link rel="stylesheet" type="text/css" href="{% static 'posts/static/index.css' %}"/>{% endblock %}
+{% block body %}
+    <form method="get" action="">
+        {% csrf_token %}
+        <input type="text" name="q" placeholder="search posts by title">
+        <input type="submit" value="search">
+    </form>
+    <br/>
+    <table class="table">
+        <tbody>
+            {% for obj in object_list %}
+            <tr>
+            <div class="container-fluid feed-posts">
+                <div class="col-md-12">
+                    <h1><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h1>
+                </div>
+                <hr/>
+                {% if obj.image %}
+                    <div class="col-md-4 container-fluid">
+                        <br/><img src="{{ obj.image.url }}" class=" post-img-thumbnail"/><br/>
+                    </div>
+                    <div class="col-md-8 container-fluid">
+                {% else %}
+                    <div class="col-md-12 container-fluid">
+                {% endif %}
+                {{ obj.content|linebreaks|truncatechars_html:240 }}<br/>
+                </div>
+                <div class="col-md-12 container-fluid">
+                    -by <a href="{% url 'accounts:profile' username=obj.user.username %}"> {{ obj.user.username }} </a>
+                    | {{ obj.timestamp | timesince}} ago <br/>
+
+                    {% if obj.user == user %}
+                    <a href="{% url 'posts:update' slug=obj.slug %}">Update</a> /
+                    <a href="{% url 'posts:delete' slug=obj.slug %}">Delete</a><br/>
+                    {% endif %}
+                </div>
+            </div>
+            </tr>
+            {%  endfor %}
+        </tbody>
+    </table>
+{% endblock %}

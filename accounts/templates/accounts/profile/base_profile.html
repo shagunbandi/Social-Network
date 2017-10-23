@@ -1,0 +1,38 @@
+{% extends 'peace/base.html' %}
+{% load staticfiles %}
+{% block title %}{{ title }}{% endblock %}
+{% block head %}<link rel="stylesheet" type="text/css" href="{% static 'accounts/static/profile.css' %}"/>{% endblock %}
+{% block body %}
+    {% block nav %}
+        <h1>{{ username }}</h1>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#profile_navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="profile_navbar">
+                    <ul class="nav navbar-nav navbar-center">
+                        <li><a href="{% url 'accounts:profile' username=username %}">Profile</a></li>
+                        {% if username == user.username %}
+                        <li><a href="{% url 'accounts:friend_list' username=username %}">Friend List</a></li>
+                        <li><a href="{% url 'accounts:friend_requests' username=username %}">Friend Requests</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'accounts:user_posts' username=username %}">User Posts</a></li>
+                        <li><a href="{% url 'accounts:liked_posts' username=username %}">liked Posts</a></li>
+                        <li><a href="{% url 'accounts:user_comments' username=username %}">Comments</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    {% endblock nav %}
+    {% block body_accounts %}
+    {% endblock body_accounts %}
+{% endblock %}
+
+{% block sidebar_wrapper %}
+{% endblock sidebar_wrapper%}

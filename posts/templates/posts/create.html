@@ -1,0 +1,9 @@
+{% extends 'peace/base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="create post">
+</form>
+{% endblock %}

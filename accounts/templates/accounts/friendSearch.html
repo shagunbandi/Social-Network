@@ -1,0 +1,14 @@
+{% extends 'peace/base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+
+    <form method="get" action="">
+    <input type="text" name="q" placeholder="search friends">
+    <input type="submit" value="search">
+    </form>
+
+    {% for obj in query %}
+    <a href="{% url 'accounts:profile' username=obj %}">{{ obj }}</a><br>
+    {%  endfor %}
+
+{% endblock %}

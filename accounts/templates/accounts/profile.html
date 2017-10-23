@@ -1,0 +1,176 @@
+{% extends 'peace/base.html' %}
+{% load staticfiles %}
+{% block title %}{{ title }}{% endblock %}
+{% block head %}<link rel="stylesheet" type="text/css" href="{% static 'accounts/static/profile.css' %}"/>{% endblock %}
+{% block body %}
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#profile_navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="profile_navbar">
+                <ul class="nav navbar-nav navbar-center">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'posts:index' %}">Posts</a></li>
+                    <li><a href="{% url 'posts:create' %}">Create</a></li>
+                    <li><a href="{% url 'accounts:search' %}">Search Users</a></li>
+                    <li><a href="{% url 'counsellor:index' %}">Cousellor</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+{#    {% if instance != user %}#}
+{#        <a href="{% url 'accounts:send-request' username=instance.username %}">Send Request</a>#}
+{#        <a href="{% url 'accounts:unfriend' username=instance.username %}">Remove Friend</a>#}
+{#        <hr/>#}
+{#    {% endif %}#}
+{#    Username : {{ instance.username }}<br/>#}
+{#    Email: {{ instance.email }}<br/> {# ye nahi dikhatan hai #}
+{#    <hr/>#}
+
+{#    {% if instance == user %}#}
+        {#######################}
+        {#  Friend List Here   #}
+        {#######################}
+{#        <div style="background-color: #f0ad4e">#}
+{#        <h1>Friend List:</h1>#}
+{#            {% for friend in friend_list %}#}
+{#            <p><a href="{% url 'accounts:profile' username=friend.username %}">{{ friend }}</a></p>#}
+{#            {% endfor %}#}
+{#            <hr/>#}
+{#        <hr/>#}
+{#        </div>#}
+
+        {#######################}
+        {#      Till Here      #}
+        {#######################}
+
+
+        {#######################}
+        {#  Friend Request     #}
+        {#######################}
+{#        <div style="background-color: #e7c3c3">#}
+{#        <h1>Friend Requests:</h1>#}
+{#        <h2>Received</h2>#}
+{#            {% for friend in friend_request_received %}#}
+{#                <a href="{% url 'accounts:profile' username=friend.username %}"> {{ friend }} </a> /#}
+{#                <a href="{% url 'accounts:accept-request' username=friend.username %}">Accept</a> <br/>#}
+{#                <a href="{% url 'accounts:decline-request' username=friend.username %}">Decline</a> /#}
+{#            {% endfor %}#}
+{##}
+{#        <h2>Sent</h2>#}
+{#            {% for friend in friend_request_sent %}#}
+{#                <a href="{% url 'accounts:profile' username=friend.username %}"> {{ friend }} </a> /#}
+{#                <a href="{% url 'accounts:cancel-request' username=friend.username %}">Cancel Sent Request</a><br/>#}
+{#            {% endfor %}#}
+{#            <hr/>#}
+{#        <hr/>#}
+{#        </div>#}
+
+        {#######################}
+        {#      Till Here      #}
+        {#######################}
+
+{#    {% endif %}#}
+
+    {#######################}
+    {#  Questions/Posts    #}
+    {#######################}
+{#    <div style="background-color: #9acfea">#}
+{#    <h1>Questions/Posts:</h1>#}
+{##}
+{#    {% for obj in posts %}#}
+{#        <h1><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h1>#}
+{#        {% if obj.image %}#}
+{#        <br/><img src="{{ obj.image.url }}" width="500px"/><br/>#}
+{#        {% endif %}#}
+{#        {{ obj.content|linebreaks }}<br/>#}
+{#        {{ obj.timestamp }}<br/>#}
+{##}
+{#        {% if obj.user == user %}#}
+{#        <a href="{% url 'posts:update' slug=obj.slug %}">Update</a> /#}
+{#        <a href="{% url 'posts:delete' slug=obj.slug %}">Delete</a>#}
+{#        {% endif %}#}
+{##}
+{#        <hr/>#}
+{#    {%  endfor %}#}
+{##}
+{##}
+{#    <hr/>#}
+{#    </div>#}
+
+    {#######################}
+    {#      Till Here      #}
+    {#######################}
+
+    {#######################}
+    {#  Comment From Here  #}
+    {#######################}
+{#    <div style="background-color: #b2dba1">#}
+{#    <h1>Commented on Questions</h1>#}
+{##}
+{#    {% for post in comments %}#}
+{#        <h1><a href="{{ post.key.get_absolute_url }}">{{ post.key.title }}</a></h1>#}
+{#        {% if post.key.image %}#}
+{#        <br/><img src="{{ post.key.image.url }}" width="500px"/><br/>#}
+{#        {% endif %}#}
+{#        {{ post.key.content|linebreaks }}<br/>#}
+{#        {{ post.key.timestamp }}<br/>#}
+{##}
+{#        {% if post.key.user == user %}#}
+{#        <a href="{% url 'posts:update' slug=post.key.slug %}">Update</a> /#}
+{#        <a href="{% url 'posts:delete' slug=post.key.slug %}">Delete</a><br/>#}
+{#        {% endif %}#}
+{#        -{{ post.key.user.username }}#}
+{##}
+{#        <h3>Comment</h3>#}
+{#        {% for comments_for_post in post.value %}#}
+{#            starts --> {{ comments_for_post.content }} <-- end<br/>#}
+{#            <hr/>#}
+{#        {% endfor %}#}
+{#        <hr/>#}
+{##}
+{#    {% endfor %}#}
+{#    </div>#}
+
+    {#######################}
+    {#      Till Here      #}
+    {#######################}
+
+    {#######################}
+    {#      Liked Post     #}
+    {#######################}
+{#    <div style="background-color: #dca7a7">#}
+{#    <h1>Liked Posts:</h1>#}
+{##}
+{#    {% for obj in liked_posts %}#}
+{#        <h1><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h1>#}
+{#        {% if obj.image %}#}
+{#        <br/><img src="{{ obj.image.url }}" width="500px"/><br/>#}
+{#        {% endif %}#}
+{#        {{ obj.content|linebreaks }}#}
+{#        {{ obj.timestamp }}<br/>#}
+{##}
+{#        {% if obj.user == user %}#}
+{#        <a href="{% url 'posts:update' slug=obj.slug %}">Update</a> /#}
+{#        <a href="{% url 'posts:delete' slug=obj.slug %}">Delete</a>#}
+{#        {% endif %}#}
+{##}
+{#        <hr/>#}
+{#    {%  endfor %}#}
+{##}
+{##}
+{#    <hr/>#}
+{#    </div>#}
+
+    {#######################}
+    {#      Till Here      #}
+    {#######################}
+{% endblock %}

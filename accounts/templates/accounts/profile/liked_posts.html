@@ -1,0 +1,27 @@
+{% extends 'accounts/profile/base_profile.html' %}
+{% block nav %}
+    {% with username=title %}
+        {{ block.super }}
+    {% endwith%}
+{% endblock %}
+{% block title %}{{ title }} | profile{% endblock %}
+{% block body_accounts %}
+    <div class="container-fluid">
+        <h1>Liked Posts:</h1>
+        {% for obj in liked_posts %}
+            <h1><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h1>
+            {% if obj.image %}
+                <br/><img src="{{ obj.image.url }}" width="500px"/><br/>
+            {% endif %}
+            {{ obj.content|linebreaks }}
+            {{ obj.timestamp }}<br/>
+
+            {% if obj.user == user %}
+                <a href="{% url 'posts:update' slug=obj.slug %}">Update</a> /
+                <a href="{% url 'posts:delete' slug=obj.slug %}">Delete</a>
+            {% endif %}
+
+            <hr/>
+        {%  endfor %}
+        </div>
+{% endblock %}

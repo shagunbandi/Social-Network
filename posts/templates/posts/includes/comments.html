@@ -1,0 +1,56 @@
+{{ comment.content|linebreaks }}
+- {{ comment.user.username }} | {{ comment.timestamp | timesince }}<br/>
+{% if comment.user == user %}
+    <a href="{% url 'posts:comments:delete' pk=comment.pk slug=comment.content_object.slug %}">Delete</a><br/>
+{% endif %}
+
+
+<!-- Like/Dislike -->
+<a type="button" data-toggle="modal" data-target="#whoLiked">Upvotes: </a>
+<span class="like-count" data-likes="{{ comment.upvotes.count }}">{{ comment.upvotes.count }}</span><br/>
+<a class="like-btn" data-href="{{ comment.get_api_upvotes_url }}">
+    {% if request.user in comment.upvotes.all %}
+        Unlike
+    {% else %}
+        Like
+    {% endif %}
+</a>
+<br/>
+
+
+<div class="modal fade" id="whoLiked" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                {% for user in comment.upvotes.all %}
+                    <a href="{% url 'accounts:profile' username=user %}">{{ user }}</a><br/>
+                {% endfor %}
+                <a type="button" class="btn btn-default" data-dismiss="modal">X</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Reply to Comments -->
+<div class="comment_reply" id="{{ comment.pk }}">
+    <footer>
+        <a class="show-comments" href="#{{ comment.pk }}">{{ comment.children.count }} comments</a> | <a class="reply-comment">reply</a><br/>
+    </footer>
+    <div class="all-comments">
+        {% for comment in comment.children %}
+            <div class="comment-child">
+                {% include 'posts/includes/comments.html' %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="reply-form">
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ comment_form }}
+            <input type="hidden" name="parent_id" value="{{ comment.id }}">
+            <input type="hidden" name="parent_level" value="{{ comment.level }}">
+            <input type="submit" value="reply">
+        </form>
+    </div>
+</div>

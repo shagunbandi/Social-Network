@@ -1,0 +1,33 @@
+{% extends 'accounts/profile/base_profile.html' %}
+{% block nav %}
+    {% with username=title %}
+        {{ block.super }}
+    {% endwith%}
+{% endblock %}
+{% block title %}{{ title }} | profile{% endblock %}
+{% block body_accounts %}
+    <div class="container-fluid">
+        <h1>Commented on Questions: </h1>
+        {% for post in comments %}
+            <h1><a href="{{ post.key.get_absolute_url }}">{{ post.key.title }}</a></h1>
+            {% if post.key.image %}
+                <br/><img src="{{ post.key.image.url }}" width="500px"/><br/>
+            {% endif %}
+            {{ post.key.content|linebreaks }}<br/>
+            {{ post.key.timestamp }}<br/>
+
+            {% if post.key.user == user %}
+                <a href="{% url 'posts:update' slug=post.key.slug %}">Update</a> /
+                <a href="{% url 'posts:delete' slug=post.key.slug %}">Delete</a><br/>
+            {% endif %}
+            -{{ post.key.user.username }}
+
+            <h3>Comment</h3>
+            {% for comments_for_post in post.value %}
+                starts --> {{ comments_for_post.content }} <-- end<br/>
+    {#            <hr/>#}
+            {% endfor %}
+            <hr/>
+        {% endfor %}
+        </div>
+{% endblock %}

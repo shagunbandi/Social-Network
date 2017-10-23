@@ -1,0 +1,25 @@
+{% extends 'accounts/profile/base_profile.html' %}
+{% block nav %}
+    {% with username=title %}
+        {{ block.super }}
+    {% endwith%}
+{% endblock %}
+{% block title %}{{ title }} | profile{% endblock %}
+{% block body_accounts %}
+
+    <div class="container-fluid">
+        <h1>Friend Requests:</h1>
+        <h2>Received</h2>
+            {% for friend in friend_request_received %}
+                <a href="{% url 'accounts:profile' username=friend.username %}"> {{ friend }} </a> /
+                <a href="{% url 'accounts:accept-request' username=friend.username %}">Accept</a> /
+                <a href="{% url 'accounts:decline-request' username=friend.username %}">Decline</a> /
+            {% endfor %}
+
+        <h2>Sent</h2>
+            {% for friend in friend_request_sent %}
+                <a href="{% url 'accounts:profile' username=friend.username %}"> {{ friend }} </a> /
+                <a href="{% url 'accounts:cancel-request' username=friend.username %}">Cancel Sent Request</a><br/>
+            {% endfor %}
+        </div>
+{% endblock %}
