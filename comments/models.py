@@ -31,7 +31,7 @@ class CommentManager(models.Manager):
                 instance.content = content
                 instance.user = user
                 instance.content_type = model_qs.first()
-                instance.object_id = obj_qs.first()
+                instance.object_id = obj_qs.first().id
                 if parent_obj:
                     instance.parent = parent_obj
                 instance.save()

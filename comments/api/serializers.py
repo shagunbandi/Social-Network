@@ -12,7 +12,6 @@ def create_comment_serializer(model_type='post', slug=None, parent_id=None, user
             model = Comment
             fields = [
                 'id',
-                'parent',
                 'content',
                 'timestamp'
             ]
