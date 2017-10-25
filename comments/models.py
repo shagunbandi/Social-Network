@@ -39,6 +39,14 @@ class CommentManager(models.Manager):
         return None
 
 
+def get_children_count_total(obj):
+    total = obj.children().count()
+    for child in obj.children():
+        count = get_children_count_total(child)
+        total += count
+    return total
+
+
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
@@ -59,6 +67,9 @@ class Comment(models.Model):
 
     def children(self):
         return Comment.objects.filter(parent=self)
+
+    def total_children_count(self):
+        return get_children_count_total(self)
 
     @property
     def is_parent(self):

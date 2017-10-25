@@ -5,7 +5,6 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-
 def create_comment_serializer(model_type='post', slug=None, parent_id=None, user=None):
     class CommentCreateSerializer(ModelSerializer):
         class Meta:
@@ -55,8 +54,24 @@ def create_comment_serializer(model_type='post', slug=None, parent_id=None, user
     return CommentCreateSerializer
 
 
+def get_children_count(obj):
+    return obj.children().count()
+
+
+def get_children_count_total(obj):
+    # total = obj.children().count()
+    # for child in obj.children():
+    #     count = get_children_count_total(child)
+    #     total += count
+    # return total
+    total = obj.total_children_count()
+    print(total)
+    return total
+
+
 class CommentSerializer(ModelSerializer):
     reply_count = SerializerMethodField()
+    reply_total = SerializerMethodField()
 
     class Meta:
         model = Comment
@@ -67,17 +82,65 @@ class CommentSerializer(ModelSerializer):
             'content',
             'parent',
             'reply_count',
+            'reply_total',
             'timestamp',
         ]
 
     def get_reply_count(self, obj):
-        if obj.is_parent:
-            return obj.children().count()
-        return 0
+        return get_children_count(obj)
+
+    def get_reply_total(self, obj):
+        return get_children_count_total(obj)
+
+
+class CommentListSerializer(ModelSerializer):
+    reply_count = SerializerMethodField()
+    reply_total = SerializerMethodField()
+    replies = SerializerMethodField()
+    url = HyperlinkedIdentityField(
+        view_name='api-comments:detail'
+    )
+
+    class Meta:
+        model = Comment
+        fields = [
+            'id',
+            'content',
+            'reply_count',
+            'reply_total',
+            'replies',
+            'timestamp',
+            'url'
+        ]
+
+    def get_reply_count(self, obj):
+        return get_children_count(obj)
+
+    def get_reply_total(self, obj):
+        return get_children_count_total(obj)
+
+    def get_replies(self, obj):
+        try:
+            return CommentChildSerializer(obj.children(), many=True).data
+        except:
+            return None
+
+
+class CommentUpdateSerializer(ModelSerializer):
+
+    class Meta:
+        model = Comment
+        fields = [
+            'id',
+            'content',
+            'timestamp',
+        ]
 
 
 class CommentChildSerializer(ModelSerializer):
     reply_count = SerializerMethodField()
+    reply_total = SerializerMethodField()
+    replies = SerializerMethodField()
 
     class Meta:
         model = Comment
@@ -86,16 +149,29 @@ class CommentChildSerializer(ModelSerializer):
             'content',
             'timestamp',
             'reply_count',
-            'timestamp',
+            'reply_total',
+            'replies'
         ]
 
     def get_reply_count(self, obj):
-        return obj.children().count()
+        return get_children_count(obj)
+
+    def get_reply_total(self, obj):
+        return get_children_count_total(obj)
+
+
+    def get_replies(self, obj):
+        try:
+            return CommentChildSerializer(obj.children(), many=True).data
+        except:
+            return None
 
 
 class CommentDetailSerializer(ModelSerializer):
     replies = SerializerMethodField()
     reply_count = SerializerMethodField()
+    reply_total = SerializerMethodField()
+    content_obj_url = SerializerMethodField()
 
     class Meta:
         model = Comment
@@ -104,17 +180,33 @@ class CommentDetailSerializer(ModelSerializer):
             'content_type',
             'object_id',
             'content',
-            'replies',
-            'reply_count',
             'timestamp',
+            'content_obj_url',
+            'reply_count',
+            'reply_total',
+            'replies'
+        ]
+        read_only_fields = [
+            'reply_count',
+            'reply_total',
+            'replies'
         ]
 
+    def get_content_obj_url(self, obj):
+        try:
+            return obj.content_object.get_api_url()
+        except:
+            return None
+
     def get_replies(self, obj):
-        if obj.is_parent:
+        try:
             return CommentChildSerializer(obj.children(), many=True).data
-        return None
+        except:
+            return None
 
     def get_reply_count(self, obj):
-        if obj.is_parent:
-            return obj.children().count()
-        return 0
+        return get_children_count(obj)
+
+    def get_reply_total(self, obj):
+        return get_children_count_total(obj)
+
