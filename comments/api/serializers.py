@@ -39,7 +39,7 @@ def create_comment_serializer(model_type='post', slug=None, parent_id=None, user
 
         def create(self, validated_data):
             content = validated_data.get('content')
-            if not user:
+            if user:
                 main_user = user
             else:
                 main_user = User.objects.first()
