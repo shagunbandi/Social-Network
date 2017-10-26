@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^posts/', include('posts.urls', namespace='posts')),
     url(r'^api/posts/', include('posts.api.urls', namespace='api-posts')),
     url(r'^api/comments/', include('comments.api.urls', namespace='api-comments')),
+    url(r'^api/accounts/', include('accounts.api.urls', namespace='api-accounts')),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
 ]
 
