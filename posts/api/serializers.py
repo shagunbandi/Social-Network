@@ -2,7 +2,7 @@ from rest_framework.serializers import ModelSerializer, HyperlinkedIdentityField
 from posts.models import Post
 from comments.models import Comment
 from comments.api.serializers import CommentSerializer
-
+from accounts.api.serializers import UserDetailSerializer
 
 link_to_post = HyperlinkedIdentityField(
     view_name='api-posts:detail',
@@ -16,7 +16,7 @@ class PostListSerializer(ModelSerializer):
         view_name='api-posts:delete',
         lookup_field='slug'
     )
-    user = SerializerMethodField()
+    user = UserDetailSerializer(read_only=True)
 
     class Meta:
         model = Post
@@ -30,9 +30,6 @@ class PostListSerializer(ModelSerializer):
             'delete_url',
         ]
 
-    def get_user(self, obj):
-        return str(obj.user.username)
-
 
 class PostDetailSerializer(ModelSerializer):
     url = HyperlinkedIdentityField(
@@ -43,7 +40,7 @@ class PostDetailSerializer(ModelSerializer):
         view_name='api-posts:delete',
         lookup_field='slug'
     )
-    user = SerializerMethodField()
+    user = UserDetailSerializer(read_only=True)
     image = SerializerMethodField()
     comments = SerializerMethodField()
 
@@ -61,9 +58,6 @@ class PostDetailSerializer(ModelSerializer):
             'image',
             'comments',
         ]
-
-    def get_user(self, obj):
-        return str(obj.user.username)
 
     def get_image(self, obj):
         try:

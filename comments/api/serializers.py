@@ -3,7 +3,10 @@ from comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import get_user_model
 
+from accounts.api.serializers import UserDetailSerializer
+
 User = get_user_model()
+
 
 def create_comment_serializer(model_type='post', slug=None, parent_id=None, user=None):
     class CommentCreateSerializer(ModelSerializer):
@@ -59,14 +62,7 @@ def get_children_count(obj):
 
 
 def get_children_count_total(obj):
-    # total = obj.children().count()
-    # for child in obj.children():
-    #     count = get_children_count_total(child)
-    #     total += count
-    # return total
-    total = obj.total_children_count()
-    print(total)
-    return total
+    return obj.total_children_count()
 
 
 class CommentSerializer(ModelSerializer):
@@ -97,6 +93,7 @@ class CommentListSerializer(ModelSerializer):
     reply_count = SerializerMethodField()
     reply_total = SerializerMethodField()
     replies = SerializerMethodField()
+    user = UserDetailSerializer(read_only=True)
     url = HyperlinkedIdentityField(
         view_name='api-comments:detail'
     )
@@ -105,6 +102,7 @@ class CommentListSerializer(ModelSerializer):
         model = Comment
         fields = [
             'id',
+            'user',
             'content',
             'reply_count',
             'reply_total',
@@ -141,11 +139,13 @@ class CommentChildSerializer(ModelSerializer):
     reply_count = SerializerMethodField()
     reply_total = SerializerMethodField()
     replies = SerializerMethodField()
+    user = UserDetailSerializer(read_only=True)
 
     class Meta:
         model = Comment
         fields = [
             'id',
+            'user',
             'content',
             'timestamp',
             'reply_count',
@@ -172,11 +172,13 @@ class CommentDetailSerializer(ModelSerializer):
     reply_count = SerializerMethodField()
     reply_total = SerializerMethodField()
     content_obj_url = SerializerMethodField()
+    user = UserDetailSerializer(read_only=True)
 
     class Meta:
         model = Comment
         fields = [
             'id',
+            'user',
             'content_type',
             'object_id',
             'content',

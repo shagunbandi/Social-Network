@@ -14,6 +14,15 @@ from django.db.models import Q
 User = get_user_model()
 
 
+class UserDetailSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'username',
+            'email'
+        ]
+
+
 class UserCreateSerializer(ModelSerializer):
     email = EmailField(label='Email address')
     email2 = EmailField(label='Confirm email')
