@@ -24,7 +24,7 @@ Bootstrap
 URL  | Description
 ------------- | -------------
 `/api/accounts/register`   |   Register a new user
-`/api/posts/ogin` |   Login a user
+`/api/accounts/login` |   Login a user
 
 ### Post
 
