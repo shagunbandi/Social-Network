@@ -18,27 +18,30 @@ Bootstrap
 1. Django and Django REST-framework.
 
 ## APIs
+### Accounts
+
+
+URL  | Description
+------------- | -------------
+`/api/accounts/register`   |   Register a new user
+`/api/posts/ogin` |   Login a user
+
 ### Post
- - `/api/posts/`
-  - View all Posts
- - `/api/posts/create`
-  - Create a Post
- - `/api/posts/<slug>/`
-  - View details of post with slug `slug`
- - `/api/posts/<slug>/delete`
-  - Delete post with slug `slug`
- - `/api/posts/<slug>/update`
-  - Update post with slug `slug`
+
+URL  | Description
+------------- | -------------
+`/api/posts/`   |   View all Posts
+`/api/posts/create` |   Create a Post
+`/api/posts/<slug>/`    |   View details of post with slug `slug`
+`/api/posts/<slug>/delete`  |   Delete post with slug `slug`
+`/api/posts/<slug>/update`  |   Update post with slug `slug`
  
  ### Comment
- - `api/comments/`
-  - View all Comments
- - `/api/posts/<pk>`
-  - Get details of comment with pk `pk`
 
+URL  | Description
+------------- | -------------
+`/api/comments/`   |   View all Comments
+`/api/comments/create` |   Create a Comment
+`/api/comments/<pk>` |   Get details of comment with pk `pk`
+`/api/comments/<slug>/update`  |   Update or Delete comment with slug `slug`
 
-#### Bugs and features to be added
-1. Friend Request to be done by AJAX.
-2. Comment APIs to be created
-3. Account login, logout and create APIs to be created.
-4. Make it more stable for big data.
