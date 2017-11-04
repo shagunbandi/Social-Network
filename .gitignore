@@ -8,8 +8,9 @@ comments/__pycache__/
 comments/api/__pycache__/
 comments/migrations/0001_initial.py
 comments/migrations/__pycache__/
-db.sqlite3
 posts/__pycache__/
 posts/api/__pycache__/
 posts/migrations/0001_initial.py
 posts/migrations/__pycache__/
+media/
+static/
