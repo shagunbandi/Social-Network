@@ -1,7 +1,9 @@
 # Social-Network
 
 It is a social networking site just like any other. We can add, delete posts. Like, make friends, etc. 
-project available on https://github.com/shagunbandi/Social- (Recommended, works perfectly)
+
+project available on https://github.com/shagunbandi/Social-Network/ (Recommended, works perfectly)
+
 to view online https://quiet-beach-93787.herokuapp.com/posts/ (Due to Heroku server, it might feel slower. Also CSS Files are not imported properly on heroku server)
 
 ## What can we do
