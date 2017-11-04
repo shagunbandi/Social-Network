@@ -1,0 +1,26 @@
+.comment-main {
+    border-left: 6px solid black;
+    background-color: #f2f2f2;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+.comment-child {
+    border-left: 6px solid #000000;
+    background-color: #cccccc;
+    margin: 5px;
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.post-detail {
+    /*border: 2px dashed #d1d1d1;*/
+}
+
+.all-comments {
+    display: none;
+}
+
+.reply-form {
+    display: none;
+}
