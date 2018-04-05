@@ -12,3 +12,5 @@ posts/__pycache__/
 posts/api/__pycache__/
 posts/migrations/0001_initial.py
 posts/migrations/__pycache__/
+ngrok
+ngrok how to run.md

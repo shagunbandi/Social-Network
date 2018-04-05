@@ -40,7 +40,7 @@ class UserCreateSerializer(ModelSerializer):
         }
 
     def validate_email(self, value):
-        data = self.initial_data()
+        data = self.initial_data
         email1 = value
         email2 = data.get('email2')
         if email1 != email2:
@@ -111,6 +111,6 @@ class UserLoginSerializer(ModelSerializer):
             if not user_obj.check_password(password):
                 raise ValidationError('Credential don\'t match')
 
-        data['token'] = 'Here is our token mister'
+        data['token'] = 'RANDOM TOKEN'
 
         return data
