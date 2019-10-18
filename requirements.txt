@@ -31,7 +31,7 @@ Markdown==2.6.9
 matplotlib==2.1.0
 more-itertools==3.2.0
 msgpack-python==0.4.8
-nltk==3.2.5
+nltk==3.4.5
 numpy==1.13.3
 olefile==0.44
 pandas==0.20.3
