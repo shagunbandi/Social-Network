@@ -6,7 +6,7 @@
 {% endblock %}
 {% block title %}{{ title }} | profile{% endblock %}
 {% block body_accounts %}
-    <div class="container-fluid">
+    <div>
         <h1>About: </h1>
         {% if instance != user %}
             <a href="{% url 'accounts:send-request' username=instance.username %}">Send Request</a>
