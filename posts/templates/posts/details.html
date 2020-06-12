@@ -2,56 +2,71 @@
 {% load static %}
 {% block title %}{{ instance.title }}{% endblock %}
 {% block head %}
-    <link rel="stylesheet" type="text/css" href="{% static 'posts/static/details.css' %}"/>
-    <script src="{% static 'posts/static/comments.js' %}"></script>
 {% endblock %}
 
 {% block body %}
-{#    <span class="post-detail">#}
 {#    Post    #}
-    {% if instance.image %}
-        <img src="{{ instance.image.url }}" class="img-responsive"/><br/>
-    {% endif %}
 
-    <h1><a href="{{ instance.get_absolute_url }}"> {{ instance.title }}</a></h1><hr/>
-
-    {{ instance.content|linebreaks }}<br/>
-
-    - by <a href="{% url 'accounts:profile' username=instance.user.username %}"> {{ instance.user.username }} </a>
-    | {{ instance.timestamp | timesince }} <br/>
-
-    {% if instance.user == user %}
-        <a href="{% url 'posts:update' slug=instance.slug %}">Update</a> /
-        <a href="{% url 'posts:delete' slug=instance.slug %}">Delete</a> <br/>
-    {% endif %}
-    <div class="parent-like">
-    Upvotes: <span class="like-count" data-likes="{{ instance.upvotes.count }}">{{ instance.upvotes.count }}</span><br/>
-    <a class="like-btn" data-href="{{ instance.get_api_upvotes_url }}">
-    {% if has_upvoted %}
-        Unlike
-    {% else %}
-        Like
-    {% endif %}
-
-    </a>
-    </div>
-    <hr/>
-
-{#    Comment From Here    #}
-    <div>
-        <h3>Comments</h3>
-        <form method="post" action="">
-            {% csrf_token %}
-            {{ comment_form }}
-            <input type="submit" value="Post Comment">
-        </form>
-        <hr/>
-        {% for comment in instance.comments %}
-            <div class="comment-main">
-        {% include 'posts/includes/comments.html' %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="text-center">
+                <h1><a class="link-text" href="{{ instance.get_absolute_url }}"> {{ instance.title }}</a></h1>
             </div>
-        {% endfor %}
 
+            {% if instance.image %}
+                <div class="col-md-12 text-center">
+                    <img src="{{ instance.image.url }}" class="post-img-thumbnail"/><br/><br/>
+                </div>
+            {% endif %}
+            <div class="text-center col-md-12">
+                {{ instance.content|linebreaks }}
+            </div>
+
+            <div class="col-md-12">
+                <div class="col-md-6 text-left">
+                    {% if instance.user == user %}
+                        <a class="link-text" href="{% url 'posts:update' slug=instance.slug %}">Update</a> /
+                        <a class="link-text" href="{% url 'posts:delete' slug=instance.slug %}">Delete</a> <br/>
+                    {% endif %}
+                    <div class="parent-like">
+                        <a class="link-text like-btn" data-href="{{ instance.get_api_upvotes_url }}">
+                        {% if has_upvoted %} Unlike
+                        {% else %} Like
+                        {% endif %}
+                        </a>
+                        Upvotes: <span class="link-text like-count" data-likes="{{ instance.upvotes.count }}">{{ instance.upvotes.count }}</span>
+
+                    </div>
+                </div>
+                <div class="col-md-6 text-right">
+                    - by <a class="link-text" href="{% url 'accounts:profile' username=instance.user.username %}"> {{ instance.user.username }} </a>
+                    | {{ instance.timestamp | timesince }} <br/>
+                </div>
+            </div>
+        </div>
     </div>
-{#    </span>#}
+
+    <div class="col-md-12">
+
+    {#    Comment From Here    #}
+        <div>
+            <h3 >Comments</h3>
+            <form method="post" action="">
+                {% csrf_token %}
+                {{ comment_form }}
+                <input class="form-control" type="submit" value="Post Comment">
+            </form>
+            <hr/>
+            {% for comment in instance.comments %}
+                <div class="comment-main">
+            {% include 'posts/includes/comments.html' %}
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
 {% endblock %}

@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b03dcbd4-8a42-4d1b-a143-5554787832b3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Peace.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Peace.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accounts/friendSearch.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/accounts/friendSearch.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/static/posts/static/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/posts/static/posts/static/comments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/static/posts/static/details.css" beforeDir="false" afterPath="$PROJECT_DIR$/posts/static/posts/static/details.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/posts/static/posts/static/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/posts/static/posts/static/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/posts/templates/peace/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/posts/templates/peace/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts/templates/posts/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/posts/templates/posts/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/templates/posts/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/posts/templates/posts/details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/templates/posts/includes/comments.html" beforeDir="false" afterPath="$PROJECT_DIR$/posts/templates/posts/includes/comments.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/posts/templates/posts/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/posts/templates/posts/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -399,9 +400,9 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="573" y="392" key="com.intellij.ide.util.TipDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1591987802174" />
-    <state x="554" y="317" width="683" height="486" key="find.popup" timestamp="1591994513942">
+    <state x="554" y="317" width="683" height="486" key="find.popup" timestamp="1591999554267">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="554" y="317" width="683" height="486" key="find.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1591994513942" />
+    <state x="554" y="317" width="683" height="486" key="find.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1591999554267" />
   </component>
 </project>

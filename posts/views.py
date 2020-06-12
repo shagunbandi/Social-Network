@@ -64,10 +64,18 @@ def posts_detail(request, slug=None):
     }
 
     comment_form = CommentForm(request.POST or None, initial=initial_data)
+    # print(comment_form)
     if comment_form.is_valid():
         if request.user.is_authenticated:
             user = request.user
             c_type = comment_form.cleaned_data.get("content_type")
+            # print(c_type)
+            # print(c_type)
+            # print(c_type)
+            # print(c_type)
+
+            c_type="post"
+
             content_type = ContentType.objects.get(model=c_type)
             object_id = comment_form.cleaned_data.get("object_id")
             content = comment_form.cleaned_data.get("content")
@@ -83,6 +91,8 @@ def posts_detail(request, slug=None):
                 if parent_qs.exists() and parent_qs.count() == 1:
                     parent_obj = parent_qs.first()
 
+
+
             new_comment, created = Comment.objects.get_or_create(
                 user=user,
                 content_type=content_type,
@@ -90,10 +100,18 @@ def posts_detail(request, slug=None):
                 content=content,
                 parent=parent_obj,
             )
+
+            print(new_comment.content_object)
+            print(created)
+
             if created:
-                return HttpResponseRedirect(new_comment.content_object.get_absolute_url())
+                print("New Comment Created")
             else:
-                return HttpResponse('Could not create. Please contact +91 9932538111 about the issue')
+                print("Same Comment Already Exists")
+                # return HttpResponse('Could not create. Please contact +91 9932538111 about the issue')
+
+            return HttpResponseRedirect(new_comment.content_object.get_absolute_url())
+
         else:
             return HttpResponse('Login in to comments on a post')
 

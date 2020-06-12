@@ -19,7 +19,7 @@
 
                     {% if obj.image %}
                         <div class="col-md-12 text-center">
-                            <br/><img src="{{ obj.image.url }}" class=" post-img-thumbnail"/><br/><br/>
+                            <br/><img src="{{ obj.image.url }}" class="post-img-thumbnail"/><br/><br/>
                         </div>
                     {% endif %}
                     <div class="text-center col-md-12">
@@ -28,7 +28,6 @@
                     <div class="col-md-12 text-right text-absolute-bottom-right">
                         -by <a class="link-text" href="{% url 'accounts:profile' username=obj.user.username %}"> {{ obj.user.username }} </a>
                         | {{ obj.timestamp | timesince}} ago <br/>
-
                         {% if obj.user == user %}
                         <a class="link-text" href="{% url 'posts:update' slug=obj.slug %}">Update</a> /
                         <a class="link-text" href="{% url 'posts:delete' slug=obj.slug %}">Delete</a><br/>

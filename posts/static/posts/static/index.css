@@ -42,7 +42,7 @@
 }
 
 .text-left {
-    text-align: center;
+    text-align: left;
 }
 
 .text-absolute-bottom-right {
@@ -86,4 +86,23 @@
 	position: absolute;
 	cursor: pointer;
 	opacity: 0;
+}
+
+.all-comments {
+    display: none;
+}
+
+.comment-main {
+    border: 1px solid #521a14;
+    border-left: 6px solid #521a14;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+.comment-child {
+    border: 1px solid #521a14;
+    border-left: 6px solid #521a14;
+    margin: 5px;
+    margin-left: 20px;
+    padding: 10px;
 }
