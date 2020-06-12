@@ -21,7 +21,7 @@ Markup :  * create, edit, delete a post.
 ## UI
 ![View Page](https://github.com/shagunbandi/Social-Network/blob/master/screenshots/2.View.png?raw=true)
 
-https://github.com/shagunbandi/Social-Network/tree/master/screenshots
+More at: https://github.com/shagunbandi/Social-Network/tree/master/screenshots
 
 ## Backend
 1. Django and Django REST-framework.
