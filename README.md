@@ -6,6 +6,7 @@ project available on https://github.com/shagunbandi/Social-Network/ (Recommended
 
 to view online https://quiet-beach-93787.herokuapp.com/posts/ (Outdated)
 
+
 ## What can we do
 1. There are posts on the home page
 2. Create, Edit, Delete, Like, Comment can be done by user.
@@ -18,7 +19,13 @@ Markup :  * create, edit, delete a post.
           * To view all comments    
 
 ## UI
-Bootstrap
+![Create Page](https://github.com/shagunbandi/Social-Network/blob/master/screenshots/1.Create.png?raw=true)
+![View Page](https://github.com/shagunbandi/Social-Network/blob/master/screenshots/2.View.png?raw=true)
+![Mobile Details Page](https://github.com/shagunbandi/Social-Network/blob/master/screenshots/3.Mobile.png?raw=true)
+![Mobile All](https://github.com/shagunbandi/Social-Network/blob/master/screenshots/4.MobileAll.png?raw=true)
+![Friends](https://github.com/shagunbandi/Social-Network/blob/master/screenshots/5.Friends.png?raw=true)
+![User Profile](https://github.com/shagunbandi/Social-Network/blob/master/screenshots/6.UserProfile.png?raw=true)
+
 
 ## Backend
 1. Django and Django REST-framework.
