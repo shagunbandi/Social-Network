@@ -1,10 +1,89 @@
-.feed-posts {
-    border: 2px dashed #d1d1d1;
-    padding: 30px;
-    margin-bottom: 20px;
+.pd-10 {
+    padding: 10px;
+}
+
+.border {
+    border: 1px solid #521a14;
+}
+
+.d-flex{
+    display: flex;
+
+}
+
+.wrap-flex {
+    flex-wrap: wrap;
+}
+
+.pv-10 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.pb-60 {
+    padding-bottom: 60px;
+}
+
+.p-0 {
+    padding:0px;
 }
 
 .post-img-thumbnail {
-    width: 100%;
-    height:100%;
+    max-height:400px;
+    max-width:100%;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: center;
+}
+
+.text-absolute-bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.navbar {
+    background: #521a14;
+    border: 0px !important;
+    border-radius: 0px !important;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #f0c6c1 !important;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #faecea !important;
+}
+
+.navbar-default .navbar-brand {
+    color: #faecea !important;
+}
+
+.link-text {
+    color: #521a14;
+}
+
+.link-text:hover {
+    color: black;
+}
+
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+}
+
+.fileUpload input.upload {
+	position: absolute;
+	cursor: pointer;
+	opacity: 0;
 }

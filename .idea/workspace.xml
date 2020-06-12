@@ -2,22 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b03dcbd4-8a42-4d1b-a143-5554787832b3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Peace.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Peace.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/api/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accounts/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/accounts/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accounts/profile/base_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/accounts/profile/base_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comments/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/comments/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accounts/friendSearch.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/accounts/friendSearch.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/static/posts/static/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/posts/static/posts/static/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/posts/templates/peace/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/posts/templates/peace/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts/templates/peace/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/posts/templates/peace/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts/templates/posts/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/posts/templates/posts/details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts/templates/posts/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/posts/templates/posts/create.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/posts/templates/posts/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/posts/templates/posts/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +55,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="FullScreen" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/shagunbandi/PycharmProjects/Projects/Peace/comments/api/urls.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
@@ -77,7 +70,7 @@
       <recent name="$PROJECT_DIR$/accounts/api" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.models">
+  <component name="RunManager" selected="Unknown.Peace294912599">
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -398,17 +391,17 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="1771" height="315" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1591986614240" />
-    <state x="397" y="199" key="SettingsEditor" timestamp="1591986757197">
+    <state x="397" y="199" key="SettingsEditor" timestamp="1591987886939">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="397" y="199" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1591986757197" />
-    <state x="573" y="392" key="com.intellij.ide.util.TipDialog" timestamp="1591986730747">
+    <state x="397" y="199" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1591987886939" />
+    <state x="573" y="392" key="com.intellij.ide.util.TipDialog" timestamp="1591987802174">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="573" y="392" key="com.intellij.ide.util.TipDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1591986730747" />
-    <state x="554" y="317" width="683" height="486" key="find.popup" timestamp="1591987650158">
+    <state x="573" y="392" key="com.intellij.ide.util.TipDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1591987802174" />
+    <state x="554" y="317" width="683" height="486" key="find.popup" timestamp="1591994513942">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="554" y="317" width="683" height="486" key="find.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1591987650158" />
+    <state x="554" y="317" width="683" height="486" key="find.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1591994513942" />
   </component>
 </project>

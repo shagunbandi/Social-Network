@@ -1,9 +1,23 @@
 {% extends 'peace/base.html' %}
 {% block title %}{{ title }}{% endblock %}
 {% block body %}
+
 <form method="post" action="" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="create post">
+    <p>
+        <label for="id_title">Title</label>
+        <input type="text" name="title" class="form-control" maxlength="120" required id="id_title"></p>
+    <p>
+        <label for="id_title">Content</label>
+        <textarea class="form-control" name="content" cols="40" rows="10" required id="id_content"></textarea>
+    </p>
+    <p>
+        <div class="fileUpload btn btn-default">
+            <label for="id_image">Image</label>
+            <input class="upload" type="file" name="image" accept="image/*" id="id_image">
+        </div>
+    </p>
+    <input class="btn btn-default" type="submit" value="create post">
 </form>
+
 {% endblock %}

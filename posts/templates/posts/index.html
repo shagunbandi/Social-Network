@@ -1,45 +1,41 @@
 {% extends 'peace/base.html' %}
 {% load static %}
 {% block title %}{{ title }}{% endblock %}
-{% block head %}<link rel="stylesheet" type="text/css" href="{% static 'posts/static/index.css' %}"/>{% endblock %}
+{% block head %}
+{% endblock %}
 {% block body %}
     <form method="get" action="">
         {% csrf_token %}
-        <input type="text" name="q" placeholder="search posts by title">
-        <input type="submit" value="search">
+        <input type="text" class="form-control" name="q" placeholder="search posts by title">
     </form>
     <br/>
-    <table class="table">
-        <tbody>
-            {% for obj in object_list %}
-            <tr>
-            <div class="container-fluid feed-posts">
-                <div class="col-md-12">
-                    <h1><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h1>
-                </div>
-                <hr/>
-                {% if obj.image %}
-                    <div class="col-md-4 container-fluid">
-                        <br/><img src="{{ obj.image.url }}" class=" post-img-thumbnail"/><br/>
+        <div class="container-fluid d-flex wrap-flex p-0">
+        {% for obj in object_list %}
+            <div class="col-md-6 pd-10 d-flex">
+                <div class="col-md-12 border pv-10 pb-60">
+                    <div class="col-md-12 text-center">
+                        <h1><a class="link-text" href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h1>
                     </div>
-                    <div class="col-md-8 container-fluid">
-                {% else %}
-                    <div class="col-md-12 container-fluid">
-                {% endif %}
-                {{ obj.content|linebreaks|truncatechars_html:240 }}<br/>
-                </div>
-                <div class="col-md-12 container-fluid">
-                    -by <a href="{% url 'accounts:profile' username=obj.user.username %}"> {{ obj.user.username }} </a>
-                    | {{ obj.timestamp | timesince}} ago <br/>
 
-                    {% if obj.user == user %}
-                    <a href="{% url 'posts:update' slug=obj.slug %}">Update</a> /
-                    <a href="{% url 'posts:delete' slug=obj.slug %}">Delete</a><br/>
+                    {% if obj.image %}
+                        <div class="col-md-12 text-center">
+                            <br/><img src="{{ obj.image.url }}" class=" post-img-thumbnail"/><br/><br/>
+                        </div>
                     {% endif %}
+                    <div class="text-center col-md-12">
+                        {{ obj.content|linebreaks|truncatechars_html:480 }}
+                    </div>
+                    <div class="col-md-12 text-right text-absolute-bottom-right">
+                        -by <a class="link-text" href="{% url 'accounts:profile' username=obj.user.username %}"> {{ obj.user.username }} </a>
+                        | {{ obj.timestamp | timesince}} ago <br/>
+
+                        {% if obj.user == user %}
+                        <a class="link-text" href="{% url 'posts:update' slug=obj.slug %}">Update</a> /
+                        <a class="link-text" href="{% url 'posts:delete' slug=obj.slug %}">Delete</a><br/>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-            </tr>
-            {%  endfor %}
-        </tbody>
-    </table>
+        {%  endfor %}
+        </div>
 {% endblock %}
