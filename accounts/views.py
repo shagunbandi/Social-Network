@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.views import logout
+from django.contrib.auth import logout
 from .forms import UserLoginForm, UserRegistrationForm, User
 from posts.models import Post
 from comments.models import Comment
@@ -74,7 +74,7 @@ def search_username(request):
 # Friend Requests
 #
 def send_request(request, username=None):
-    if not request.user.is_authenticated() or not request.user.username != username:
+    if not request.user.is_authenticated or not request.user.username != username:
         return HttpResponse('Cannot send Request')
     friend = get_object_or_404(User, username=username)
 
@@ -93,7 +93,7 @@ def send_request(request, username=None):
 
 
 def cancel_sent_request(request, username=None):
-    if not request.user.is_authenticated() or not request.user.username != username:
+    if not request.user.is_authenticated or not request.user.username != username:
         return HttpResponse('Cannot send Request')
     friend = get_object_or_404(User, username=username)
 
@@ -114,7 +114,7 @@ def cancel_sent_request(request, username=None):
 
 
 def decline_request(request, username=None):
-    if not request.user.is_authenticated() or not request.user.username != username:
+    if not request.user.is_authenticated or not request.user.username != username:
         return HttpResponse('Cannot send Request')
     friend = get_object_or_404(User, username=username)
 
@@ -136,7 +136,7 @@ def decline_request(request, username=None):
 
 
 def accept_request(request, username=None):
-    if not request.user.is_authenticated() or not request.user.username != username:
+    if not request.user.is_authenticated or not request.user.username != username:
         return HttpResponse('Cannot send Request')
     friend = get_object_or_404(User, username=username)
     user = request.user
@@ -159,7 +159,7 @@ def accept_request(request, username=None):
 
 
 def unfriend(request, username=None):
-    if not request.user.is_authenticated() or not request.user.username != username:
+    if not request.user.is_authenticated or not request.user.username != username:
         return HttpResponse('Cannot unfriend')
     friend = get_object_or_404(User, username=username)
     user = request.user

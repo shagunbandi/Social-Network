@@ -14,3 +14,6 @@ posts/migrations/0001_initial.py
 posts/migrations/__pycache__/
 ngrok
 ngrok how to run.md
+db.sqlite3
+media/
+env/

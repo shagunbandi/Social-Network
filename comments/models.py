@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
@@ -48,14 +48,14 @@ def get_children_count_total(obj):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-    parent = models.ForeignKey("self", null=True, blank=True)
+    parent = models.ForeignKey("self", null=True, blank=True, on_delete=models.CASCADE)
     upvotes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='comment_upvotes')
     objects = CommentManager()
 

@@ -6,6 +6,7 @@ from rest_framework.serializers import (
     EmailField,
     CharField
 )
+
 from comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import get_user_model

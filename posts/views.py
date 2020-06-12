@@ -39,7 +39,7 @@ def posts_list(request):
 
 @login_required(login_url='accounts:login')
 def posts_create(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return redirect('accounts:login')
 
     form = PostForm(request.POST or None, request.FILES or None)
@@ -65,7 +65,7 @@ def posts_detail(request, slug=None):
 
     comment_form = CommentForm(request.POST or None, initial=initial_data)
     if comment_form.is_valid():
-        if request.user.is_authenticated():
+        if request.user.is_authenticated:
             user = request.user
             c_type = comment_form.cleaned_data.get("content_type")
             content_type = ContentType.objects.get(model=c_type)
@@ -154,7 +154,7 @@ class PostVoteToggleRedirect(RedirectView):
             obj = get_object_or_404(Comment, pk=pk)
             url_ = obj.content_object.get_absolute_url()
         user = self.request.user
-        if user.is_authenticated():
+        if user.is_authenticated:
             if user in obj.upvotes.all():
                 obj.upvotes.remove(user)
             else:
@@ -177,7 +177,7 @@ class PostApiVoteToggleRedirect(APIView):
             'upvote': False,
             'updates': False
         }
-        if user.is_authenticated():
+        if user.is_authenticated:
             # TODO Optimize
             if user in obj.upvotes.all():
                 obj.upvotes.remove(user)
