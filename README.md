@@ -19,7 +19,7 @@ Markup :  * create, edit, delete a post.
           * To view all comments    
 
 ## UI
-![View Page](https://github.com/shagunbandi/Social-Network/blob/master/screenshots/2.View.png?raw=true | height=100)
+![View Page](https://github.com/shagunbandi/Social-Network/blob/master/screenshots/2.View.png?raw=true)
 
 https://github.com/shagunbandi/Social-Network/tree/master/screenshots
 
