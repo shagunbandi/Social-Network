@@ -17,3 +17,4 @@ ngrok how to run.md
 db.sqlite3
 media/
 env/
+.idea/*
